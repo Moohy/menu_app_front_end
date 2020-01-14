@@ -12,7 +12,6 @@ export default class LandingPageRestaurantCards extends React.Component {
         });
         axios.get("https://shielded-mesa-36213.herokuapp.com/api/logged_in", { withCredentials: true}).then(res => {
             console.log(res);
-            this.setState({ restaurants: res.data.restaurants });
         });
     }
 
