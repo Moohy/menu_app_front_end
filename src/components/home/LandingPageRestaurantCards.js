@@ -8,7 +8,7 @@ export default class LandingPageRestaurantCards extends React.Component {
         restaurants: []
     };
     componentDidMount() {
-        axios.get(`${base_url}/api/restaurants`, { withCredentials: true}).then(res => {
+        axios.get(`${base_url}/api/restaurants`).then(res => {
             console.log(res.data.restaurants);
             this.setState({ restaurants: res.data.restaurants });
         });

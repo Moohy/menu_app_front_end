@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Restaurants from '../restaurants/Restaurants'
 import ContactUs from '../statics/ContactUs'
 import AboutUs from '../statics/AboutUs'
-import Menu from '../menu/Menu'
 import SignIn from '../validation/SignIn'
 import AddMenuItem from '../menu/AddMenuItem'
 import Logout from '../validation/Logout'
@@ -36,8 +35,8 @@ class Header extends Component {
     render() {
         const loggedInLinks = (
             <div>
-            <Link to="/add_menu_item">Add Menu Item</Link>{" "}
-            <Link to="/logout">Logout</Link>{" "}
+            <Link className="navbar-brand" to="/add_menu_item">Add Menu Item</Link>{" "}
+            <Link className="navbar-brand" to="/logout">Logout</Link>{" "}
             </div>
         )
 
@@ -50,8 +49,8 @@ class Header extends Component {
 
         const loggedOutLinks = (
             <div>
-            <Link to="/signin">sign in</Link>{" "}
-            <Link to="/signup">signup</Link>{" "}
+            <Link className="navbar-brand" to="/signin">sign in</Link>{" "}
+            <Link className="navbar-brand" to="/signup">signup</Link>{" "}
             </div>
         )
 
@@ -63,15 +62,15 @@ class Header extends Component {
         )
         
         return (
+
             <div className='logo'>
                 <Router>    
                 <div>
-                    <nav>
+                    <nav className="navbar navbar-expand-lg navbar-light bg-light">
                         <Link to="/">Home</Link>{" "}
-                        <Link to="/restaurants">Restaurants</Link>{" "}
-                        <Link to="/contactus">ContactUs</Link>{" "}
-                        <Link to="/aboutus">AboutUs</Link>{" "}
-                        <Link to="/menu">Menu</Link>{" "}
+                        <Link className="navbar-brand" to="/restaurants">Restaurants</Link>{" "}
+                        <Link className="navbar-brand" to="/contactus">ContactUs</Link>{" "}
+                        <Link className="navbar-brand" to="/aboutus">AboutUs</Link>{" "}
                         {this.state.isLoggedIn? loggedInLinks : loggedOutLinks }
 
                     </nav>
@@ -81,7 +80,6 @@ class Header extends Component {
                  <Route path="/restaurants" component={Restaurants} /> 
                  <Route path="/ContactUs" component={ContactUs} /> 
                  <Route path="/aboutus" component={AboutUs} />
-                 <Route path="/menu" component={Menu} />
                  {this.state.isLoggedIn? loggedInRoutes: loggedOutRoutes}
         </Router>
             </div>            

@@ -9,14 +9,20 @@
 }
 
 .card {
-
   border: 1px solid #eee;
   box-shadow: 0 2px 2px #ccc;
   width: 250px;
+  height: 500px;
   padding: 20px;
   margin: 10px;
 }
 
 .foodpic {
-  width: 200px;
+  width: 250px;
+  height: 200px;
+}
+
+.test{
+  text-align: center;
+  color: aqua;
 }
