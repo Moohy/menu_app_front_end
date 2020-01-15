@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class AddMenuItem extends Component {
+class Menuform extends Component {
     state = {
         name: "",
         image: "",
@@ -16,16 +16,15 @@ class AddMenuItem extends Component {
         });
     };
 
-    onPost = e => {
+    onSubmit = e => {
         e.preventDefault();
-        // this.props.onPost§(this.state);
-        axios.post(`https://shielded-mesa-36213.herokuapp.com/api/restaurants/${this.props.restaurant_id}/menu_items/`, this.state)
+        // this.props.onSubmit(this.state);
+        axios.put(`https://shielded-mesa-36213.herokuapp.com/api/restaurants/${this.props.restaurant_id}/menu_items/${this.props.menu_item_id}`, this.state)
         .then(r => {
             console.log(r);
         })
         .catch(e=>{
             console.log(e);
-            
         })
         alert("im here")
         // to clear
@@ -41,7 +40,7 @@ class AddMenuItem extends Component {
         image: "",
         description: "",
         price: ""
-        })
+        });
     };
 
     render() {
@@ -79,11 +78,11 @@ class AddMenuItem extends Component {
                     onChange={e => this.chengeHandler(e)}>
                     </input>
                     <br></br>
-                    <button onClick={e => this.onPost(e)}>Add Menu Item</button>
+                    <button onClick={e => this.onSubmit(e)}>Edit Item</button>
                 </form>
             </div>
         );
     }
 }
 
-export default AddMenuItem;
+export default Menuform;

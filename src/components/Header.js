@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Restaurants from './Restaurants'
 import ContactUs from './ContactUs'
 import AboutUs from './AboutUs'
-import Menu from './Menu'
+
 import SignIn from './SignIn'
 import AddMenuItem from './AddMenuItem'
 import Logout from './Logout'
@@ -38,42 +38,42 @@ class Header extends Component {
     render() {
         const loggedInLinks = (
             <div>
-            <Link to="/add_menu_item">Add Menu Item</Link>{" "}
-            <Link to="/logout">Logout</Link>{" "}
+            <Link className="navbar-brand" to="/add_menu_item">Add Menu Item</Link>{" "}
+            <Link className="navbar-brand" to="/logout">Logout</Link>{" "}
             </div>
         )
 
         const loggedInRoutes = (
             <div>
-            <Route path="/add_menu_item" component={AddMenuItem} />
-            <Route path="/logout" component={Logout} />
+            <Route  className="navbar-brand" path="/add_menu_item" component={AddMenuItem} />
+            <Route  className="navbar-brand" path="/logout" component={Logout} />
             </div>
         )
 
         const loggedOutLinks = (
             <div>
-            <Link to="/signin">sign in</Link>{" "}
-            <Link to="/signup">signup</Link>{" "}
+            <Link className="navbar-brand" to="/signin">sign in</Link>{" "}
+            <Link className="navbar-brand" to="/signup">signup</Link>{" "}
             </div>
         )
 
         const loggedOutRoutes = (
             <div>
-            <Route path="/signin" component={SignIn} />
-            <Route path="/signup" component={SingUp} />
+            <Route  path="/signin" component={SignIn} />
+            <Route  path="/signup" component={SingUp} />
             </div>
         )
         
         return (
+
             <div className='logo'>
                 <Router>    
                 <div>
-                    <nav>
+                    <nav className="navbar navbar-expand-lg navbar-light bg-light">
                         <Link to="/">Home</Link>{" "}
-                        <Link to="/restaurants">Restaurants</Link>{" "}
-                        <Link to="/contactus">ContactUs</Link>{" "}
-                        <Link to="/aboutus">AboutUs</Link>{" "}
-                        <Link to="/menu">Menu</Link>{" "}
+                        <Link className="navbar-brand" to="/restaurants">Restaurants</Link>{" "}
+                        <Link className="navbar-brand" to="/contactus">ContactUs</Link>{" "}
+                        <Link className="navbar-brand" to="/aboutus">AboutUs</Link>{" "}
                         {this.state.isLoggedIn? loggedInLinks : loggedOutLinks }
 
                     </nav>
@@ -83,7 +83,7 @@ class Header extends Component {
                  <Route path="/restaurants" component={Restaurants} /> 
                  <Route path="/ContactUs" component={ContactUs} /> 
                  <Route path="/aboutus" component={AboutUs} />
-                 <Route path="/menu" component={Menu} />
+                 
                  {/* <Route path="/SignIn" component={SignIn} /> */}
                  {this.state.isLoggedIn? loggedInRoutes: loggedOutRoutes}
          {/* <Route path="/contact" component={() => <ContactUs list={contact} />} /> */}
