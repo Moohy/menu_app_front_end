@@ -1,17 +1,16 @@
 import React from 'react'
 import axios from 'axios'
 
+let base_url = 'https://shielded-mesa-36213.herokuapp.com'
+
 export default class LandingPageRestaurantCards extends React.Component {
     state = {
         restaurants: []
     };
     componentDidMount() {
-        axios.get("https://shielded-mesa-36213.herokuapp.com/api/restaurants", { withCredentials: true}).then(res => {
+        axios.get(`${base_url}/api/restaurants`, { withCredentials: true}).then(res => {
             console.log(res.data.restaurants);
             this.setState({ restaurants: res.data.restaurants });
-        });
-        axios.get("https://shielded-mesa-36213.herokuapp.com/api/logged_in", { withCredentials: true}).then(res => {
-            console.log(res);
         });
     }
 

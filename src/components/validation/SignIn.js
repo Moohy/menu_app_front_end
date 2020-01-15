@@ -1,33 +1,39 @@
 import React, {Component} from 'react'
 import { Container, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import axios from 'axios'
+// import API from '../../CONSTANTS'
+
+let base_url = 'https://shielded-mesa-36213.herokuapp.com'
 
 export default class SignIn extends React.Component {
     constructor(props) {
         super(props)
     
         this.state = {
-            username:"",
+            email:"",
             password:""
         }
     }
 
     handleChange = e => {
         e.preventDefault()
-        // console.log(e);
-        
         this.setState({[e.target.name]: e.target.value})
     }
 
     handleSubmit = () => {
-        axios("https://shielded-mesa-36213.herokuapp.com/api/login" , {
-            method: 'post',
-            data:  {user: this.state},
-            withCredentials: true
-        })
+        axios.post(`${base_url}/api/login` , 
+             {auth: this.state}
+        )
         .then(r=>{
             console.log(r);
-            this.props.history.push('/')
+            if (r.data.jwt) {
+                localStorage.setItem('token', r.data.jwt)
+                this.props.loginStatus(true)
+                // this.props.history.push('/')
+            }else{
+
+            }
+            
         })
         .catch(e=>{
             console.log(e);
@@ -44,9 +50,9 @@ export default class SignIn extends React.Component {
                             Username
                         </Label>
                         <Input 
-                            name= {'username'}
-                            value={this.state.username} 
-                            placeholder = {'Enter your username'}
+                            name= {'email'}
+                            value={this.state.email} 
+                            placeholder = {'Enter your email'}
                             onChange = {e => this.handleChange(e)}
                         />
                     </FormGroup>

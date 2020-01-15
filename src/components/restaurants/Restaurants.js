@@ -3,6 +3,8 @@ import axios from 'axios';
 // import RestaurantItem from './RestaurantItem'
 import RestaurantList from './RestaurantList';
 
+let base_url = 'https://shielded-mesa-36213.herokuapp.com'
+
 export default class Restaurants extends Component {
     constructor(props) {
         super(props)
@@ -14,7 +16,7 @@ export default class Restaurants extends Component {
     }
 
     componentDidMount = () =>{
-        axios.get('https://shielded-mesa-36213.herokuapp.com/api/restaurants')
+        axios.get(`${base_url}/api/restaurants`)
         .then(r=>{
             console.log(r);
             

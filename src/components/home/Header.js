@@ -1,38 +1,36 @@
 import React, { Component } from 'react';
-import Restaurants from './Restaurants'
-import ContactUs from './ContactUs'
-import AboutUs from './AboutUs'
-import Menu from './Menu'
-import SignIn from './SignIn'
-import AddMenuItem from './AddMenuItem'
-import Logout from './Logout'
-import SingUp from './SingUp'
+import Restaurants from '../restaurants/Restaurants'
+import ContactUs from '../statics/ContactUs'
+import AboutUs from '../statics/AboutUs'
+import Menu from '../menu/Menu'
+import SignIn from '../validation/SignIn'
+import AddMenuItem from '../menu/AddMenuItem'
+import Logout from '../validation/Logout'
+import SingUp from '../validation/SingUp'
 import {
     BrowserRouter as Router,
     Route,
     Link
   } from 'react-router-dom';
 import LandingPage from './LandingPage';
+import axios from 'axios'
 
 class Header extends Component {
-
-    handleLoggedInStatus(){
-        // var newStatus=""
-        // if(this.state.status=="Sign In")
-        // newStatus="Logout"
-        // else
-        // newStatus="Sign In"
-        
-        // this.setState({
-        //   status:newStatus
-        // })
-      }
       constructor(props){
         super(props)
         this.state={
           isLoggedIn: false
         }
-        this.handleLoggedInStatus = this.handleLoggedInStatus.bind(this);
+      }
+
+      componentDidMount=()=>{
+        axios.get("https://shielded-mesa-36213.herokuapp.com/api/logged_in", {headers:{ "Authorization": localStorage.getItem("token")}}).then(res => {
+            this.setState({isLoggedIn: res.data})
+        });
+      }
+
+      loginStatus = (logged_in) =>{
+        this.setState({isLoggedIn: logged_in})
       }
     
     render() {
@@ -46,7 +44,7 @@ class Header extends Component {
         const loggedInRoutes = (
             <div>
             <Route path="/add_menu_item" component={AddMenuItem} />
-            <Route path="/logout" component={Logout} />
+            <Route path="/logout" component={() => <Logout loginStatus={this.loginStatus}/>} />
             </div>
         )
 
@@ -59,7 +57,7 @@ class Header extends Component {
 
         const loggedOutRoutes = (
             <div>
-            <Route path="/signin" component={SignIn} />
+            <Route path="/signin" component={() => <SignIn loginStatus={this.loginStatus}/>} />
             <Route path="/signup" component={SingUp} />
             </div>
         )
@@ -84,18 +82,9 @@ class Header extends Component {
                  <Route path="/ContactUs" component={ContactUs} /> 
                  <Route path="/aboutus" component={AboutUs} />
                  <Route path="/menu" component={Menu} />
-                 {/* <Route path="/SignIn" component={SignIn} /> */}
                  {this.state.isLoggedIn? loggedInRoutes: loggedOutRoutes}
-         {/* <Route path="/contact" component={() => <ContactUs list={contact} />} /> */}
-        {/* <Route path="/about_us" component={() => <AboutUs list={about_us} />} />  */}
         </Router>
-
-
-          {/* <button onClick={(e)=>this.change(e)}> Sign In </button> */}
-
-            </div>
-                
-                
+            </div>            
         );
     }
 }

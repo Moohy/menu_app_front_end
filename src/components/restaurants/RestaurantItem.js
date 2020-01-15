@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Menu from './Menu'
+import Menu from '../menu/Menu'
 
 export default class RestaurantItem extends Component {
     constructor(props) {
