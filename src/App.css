@@ -72,6 +72,8 @@ header.masthead {
   background-size: cover;
 }
 
+
+
 .img1{
   background-image: url("./image1.png");
 }
@@ -79,3 +81,4 @@ header.masthead {
 .navbar {
   display: flex;
 }
+
