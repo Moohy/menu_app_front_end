@@ -38,4 +38,6 @@ https://
 ---
 # URL
  - Github: https://github.com/Moohy/menu_app_front_end
- - API github: https://github.com/Moohy/menu_app_back_end/
+ - API github: https://github.com/Moohy/menu_app/
+ - API Heroku: https://shielded-mesa-36213.herokuapp.com
+ - Fron-End Heroku: https://secure-hollows-28256.herokuapp.com
