@@ -48,11 +48,11 @@ export default class RestaurantList extends Component {
     
     render() {
         const restaurants = this.state.restaurants.map((e,i)=>(
-            <RestaurantItem key={i} restaurant={e} hideSearchBar={this.handleSearchBarToAppeare} />
+            <RestaurantItem key={i} restaurant={e} hideSearchBar={this.handleSearchBarToAppeare} hideRestaurants={this.hideRestaurants} />
         ))
         return (
             <div className='container-restaurant-items'>
-                {this.state.hideRestaurants ? null:<h1 className='page-title'>Restaurants</h1>}
+                {this.state.hideSearchBar ? null:<h1 className='page-title'>Restaurants</h1>}
                 {this.state.hideSearchBar ? null:<RestaurantsSearch value={this.state.serachInput} onChange={this.handleSearch} />}
                 <div className='cards'>
                     

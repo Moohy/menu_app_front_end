@@ -31,12 +31,15 @@ export default class Menu extends React.Component {
         const menu_items = this.state.menu.map((e,i) =>(
             <MenuItem key={i} item={e}/>
         ))
-        return (           
+        return (     
+        <>       
             <div className="item container-m">
                 {menu_items}
-                <AddMenuItem  onChange={fields => this.onChange(fields)} restaurant_id={this.props.restaurant_id}></AddMenuItem>
+                
                 
             </div>       
+            <AddMenuItem   onChange={fields => this.onChange(fields)} restaurant_id={this.props.restaurant_id}></AddMenuItem>
+        </>
         )
     }
 }

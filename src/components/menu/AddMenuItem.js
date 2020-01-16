@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Loading from '../addson/Loading'
 import { toast } from 'react-toastify';
+import { Container, Button, Form, FormGroup, Label, Input, Row } from 'reactstrap';
 
 class AddMenuItem extends Component {
     state = {
@@ -20,10 +21,12 @@ class AddMenuItem extends Component {
     };
 
     onPost = e => {
-        setTimeout(() => {
-            this.setState(prevState => {return {isActive: !prevState.isActive}})
+        // alert("sss")
+        // setTimeout(() => {
+        //     this.setState(prevState => {return {isActive: !prevState.isActive}})
         
             e.preventDefault();
+            
 
             axios.post(`https://shielded-mesa-36213.herokuapp.com/api/restaurants/${this.props.restaurant_id}/menu_items/`, this.state, {headers:{ "Authorization": localStorage.getItem("token")}})
             .then(r => {
@@ -62,48 +65,59 @@ class AddMenuItem extends Component {
             description: "",
             price: ""
             })
-        },2000)
-        this.setState(prevState => {return {isActive: !prevState.isActive}})
+        // },2000)
+        // this.setState(prevState => {return {isActive: !prevState.isActive}})
     };
 
     render() {
         return (
-            <div>
-                <Loading isActive={this.state.isActive}></Loading>
-                <form>
-                    <input
+            <div id="add-menu-form">
+                {/* <Loading isActive={this.state.isActive}></Loading> */}
+                <Row>
+                <Container>
+                    <Form>
+                        <FormGroup>
+                        <Input 
                     name="name"
                     placeholder="Name"
                     value={this.state.name}
-                    onChange={e => this.chengeHandler(e)}>
-                    </input>
-                    <br></br>
+                    onChange={e => this.chengeHandler(e)}/>
+                    </FormGroup>
+                    {/* <br></br> */}
 
-                    <input
+                    <FormGroup>
+                    <Input 
                     name="image"
                     placeholder="Image"
                     value={this.state.image}
-                    onChange={e => this.chengeHandler(e)}>
-                    </input>
-                    <br></br>
-
-                    <input
+                    onChange={e => this.chengeHandler(e)}/>
+                    </FormGroup>
+                    
+                    {/* <br></br> */}
+                    <FormGroup>
+                    <Input 
                     name="description"
                     placeholder="Description"
                     value={this.state.description}
-                    onChange={e => this.chengeHandler(e)}>
-                    </input>
-                    <br></br>
+                    onChange={e => this.chengeHandler(e)}/>
+                    </FormGroup>
+                    
+                    {/* <br></br> */}
 
-                    <input
+                    <FormGroup>
+                    <Input 
                     name="price"
                     placeholder="Price"
                     value={this.state.price}
-                    onChange={e => this.chengeHandler(e)}>
-                    </input>
-                    <br></br>
-                    <button onClick={e => this.onPost(e)}>Add Menu Item</button>
-                </form>
+                    onChange={e => this.chengeHandler(e)}/>
+                    </FormGroup>
+                    
+                    {/* <br></br> */}
+                    <Button onClick={e => this.onPost(e)}>Add Menu Item</Button>
+                    {/* </FormGroup> */}
+                    </Form>
+                </Container>
+                </Row>
             </div>
         );
     }
