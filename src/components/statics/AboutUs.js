@@ -19,15 +19,38 @@ class AboutUs extends Component {
 
 
       <section className="py-5">
-        <div className="container">
-          <h1>Team Members</h1>
-          <ul className="lead">
-          <li>Mohammed</li>
-          <li>Amal</li>
-          <li>Hatim</li>
-          <li>Dalia</li>
-          <li>Ibrahim</li>
-          </ul>
+      <div className="container">
+      <h1>Team Members</h1>
+      
+        <div className="container-memeber">
+          
+          <div className="card">
+                    <h2>Mohammed</h2>
+                    <h4>Team Leader</h4>
+                    <a href= 'https://github.com/Moohy?tab=repositories' target='_blank'>Profile</a>
+
+                </div>
+                <div className="card">
+                    <h2>Amal</h2>
+                    <h4>Team Member</h4>
+                    <a href= 'https://github.com/Amal337?tab=repositories' target='_blank'>Profile</a>
+                </div>
+                <div className="card">
+                    <h2>Hatim</h2>
+                    <h4>Team Member</h4>
+                    <a href= 'https://github.com/hatimalattas?tab=repositories' target='_blank'>Profile</a>
+                </div>
+                <div className="card">
+                    <h2>Dalia</h2>
+                    <h4>Team Member</h4>
+                    <a href= 'https://github.com/dhdammas?tab=repositories' target='_blank'>Profile</a>
+                </div>
+                <div className="card">
+                    <h2>Ibrahim</h2>
+                    <h4>Team Member</h4>
+                    <a href= 'https://github.com/izahran?tab=repositories' target='_blank'>Profile</a>
+                </div>
+        </div>
         </div>
       </section>
           </div>

@@ -169,3 +169,10 @@ header.masthead {
   margin-bottom: 100%;
 }
 
+.container-memeber {
+  display: flex;
+  flex-wrap: wrap;
+  /* width: 70%; */
+  margin: auto;
+}
+
