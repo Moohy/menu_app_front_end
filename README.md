@@ -1,5 +1,5 @@
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
-<h1 align="center"> Menu App </h1>
+
 # Summary
 Menu App is a platform to present resturants menus for viewers to check the desired resturant menu. The main purpose of the App is solving a problem of searching for resturants menus in diffirent platforms so the team came up with the idea of adding all posible menus to be included in a single platform.
 ---
