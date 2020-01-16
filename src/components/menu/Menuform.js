@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Loading from '../addson/Loading'
+import { toast } from 'react-toastify';
 
 class Menuform extends Component {
     state = {
@@ -18,35 +20,55 @@ class Menuform extends Component {
     };
 
     onSubmit = e => {
-        e.preventDefault();
-        // this.props.onSubmit(this.state);
-        axios.put(`https://shielded-mesa-36213.herokuapp.com/api/restaurants/${this.props.restaurant_id}/menu_items/${this.props.menu_item_id}`, this.state, {headers:{ "Authorization": localStorage.getItem("token")}})
-        .then(r => {
-            console.log(r);
-        })
-        .catch(e=>{
-            console.log(e);
-        })
-        alert("im here")
-        // to clear
-        this.setState({
-        name: "",
-        image: "",
-        description: "",
-        price: ""
-        });
+        setTimeout(() => {
+            this.setState(prevState => {return {isActive: !prevState.isActive}})
+            e.preventDefault();
+            // this.props.onSubmit(this.state);
+            axios.put(`https://shielded-mesa-36213.herokuapp.com/api/restaurants/${this.props.restaurant_id}/menu_items/${this.props.menu_item_id}`, this.state, {headers:{ "Authorization": localStorage.getItem("token")}})
+            .then(r => {
+                toast.success("Menu Item updated successfully", {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: false,
+                    draggable: false,
+                });
+                console.log(r);
+            })
+            .catch(e=>{
+                toast.error("Menu Item was not updated successfully", {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: false,
+                    draggable: false,
+                });
+                console.log(e);
+            })
+            // to clear
+            this.setState({
+            name: "",
+            image: "",
+            description: "",
+            price: ""
+            });
 
-        this.props.onChange({
-        name: "",
-        image: "",
-        description: "",
-        price: ""
-        });
+            this.props.onChange({
+            name: "",
+            image: "",
+            description: "",
+            price: ""
+            });
+        },2000)
+        this.setState(prevState => {return {isActive: !prevState.isActive}})
     };
 
     render() {
         return (
             <div>
+                <Loading isActive={this.state.isActive}></Loading>
                 <form>
                     <input
                     name="name"

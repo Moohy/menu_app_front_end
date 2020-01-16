@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 import axios from 'axios'
+import { toast } from 'react-toastify';
+import Loading from '../addson/Loading'
 
 let base_url = 'https://shielded-mesa-36213.herokuapp.com'
 
@@ -25,47 +27,93 @@ class SingUp extends Component {
     }
 
     handleSubmit = () => {
-        let user_id = null
-        axios.post(`${base_url}/api/users/` , 
-             {user: {
-                    'username': this.state.username,
-                    'password': this.state.password,
-                    'email': this.state.email
-                }}
-        )
-        .then(r=>{
-            console.log(r);
-            user_id = r.data.user.id
-            if (user_id != null) {
-                axios.post(`${base_url}/api/restaurants/` , 
-                {restaurant: {
-                       'name': this.state.name,
-                       'description': this.state.description,
-                       'address': this.state.address,
-                       'image': this.state.image,
-                        'user_id': user_id
-                   }}
-                )
-                .then(r=>{
-                    console.log(r);
-                    if (r.data.status == 201) {
-                        this.props.history.push('/signin')
-                    }
-                })
-                .catch(e=>{
-                    console.log(e);
-                })
-            }
-        })
-        .catch(e=>{
-            console.log(e);
-        })
-
+        setTimeout(() => {
+            this.setState(prevState => {return {isActive: !prevState.isActive}})
+  
+            let user_id = null
+            axios.post(`${base_url}/api/users/` , 
+                {user: {
+                        'username': this.state.username,
+                        'password': this.state.password,
+                        'email': this.state.email
+                    }}
+            )
+            .then(r=>{
+                console.log(r);
+                user_id = r.data.user.id
+                if (user_id != null) {
+                    toast.success("Signed Up successfully", {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: false,
+                        draggable: false,
+                    });
+                    axios.post(`${base_url}/api/restaurants/` , 
+                    {restaurant: {
+                        'name': this.state.name,
+                        'description': this.state.description,
+                        'address': this.state.address,
+                        'image': this.state.image,
+                            'user_id': user_id
+                    }}
+                    )
+                    .then(r=>{
+                        console.log(r);
+                        if (r.data.status == 201) {
+                            this.props.history.push('/signin')
+                            toast.success("Restaurant has been created successfully", {
+                                position: "top-center",
+                                autoClose: 5000,
+                                hideProgressBar: false,
+                                closeOnClick: false,
+                                pauseOnHover: false,
+                                draggable: false,
+                            });
+                        }
+                    })
+                    .catch(e=>{
+                        console.log(e);
+                        toast.error("Something went wrong try again! Or contact our team", {
+                            position: "top-center",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: false,
+                            pauseOnHover: false,
+                            draggable: false,
+                        });
+                    })
+                }else{
+                    toast.error("User not created!", {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: false,
+                        draggable: false,
+                    });
+                }
+            })
+            .catch(e=>{
+                console.log(e);
+                toast.error("Something went wrong try again! Or contact our team", {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: false,
+                    draggable: false,
+                });
+            })
+        },2000)
+        this.setState(prevState => {return {isActive: !prevState.isActive}})
     }
     
     render(){
         return(
         <div>
+            <Loading isActive={this.state.isActive}></Loading>
            <Container>
                 <Form>
                     <Col>

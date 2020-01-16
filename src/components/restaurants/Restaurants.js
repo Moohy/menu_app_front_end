@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 // import RestaurantItem from './RestaurantItem'
 import RestaurantList from './RestaurantList';
+import Loading from '../addson/Loading'
 
 let base_url = 'https://shielded-mesa-36213.herokuapp.com'
 
@@ -11,7 +12,7 @@ export default class Restaurants extends Component {
     
         this.state = {
             restaurants: [],
-            loading: true
+            isActive: true
         }
     }
 
@@ -23,7 +24,7 @@ export default class Restaurants extends Component {
             this.setState(prevState => {
                 return{
                     restaurants: r.data.restaurants,
-                    loading: !prevState.loading
+                    isActive: !prevState.isActive
                 }
             });
         })
@@ -36,8 +37,9 @@ export default class Restaurants extends Component {
 
     render() {
         return (
-            <div>           
-                {this.state.loading? null : <RestaurantList restaurants={this.state.restaurants} />}
+            <div>    
+                <Loading isActive={this.state.isActive}></Loading>       
+                {this.state.isActive? null : <RestaurantList restaurants={this.state.restaurants} />}
             </div>
         )
     }

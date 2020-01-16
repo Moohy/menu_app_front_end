@@ -1,20 +1,76 @@
 .container-m {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   width: 100%;
 }
-.container{
-  width: 25%;
+.container-menu-item{
+  display: flex;
+  justify-content: center;
+  width: 30%;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
-.card {
+.cards{
+  margin: 0 auto;
+}
+
+.cards .card {
+  border-radius: 20px;
+  width: 400px;
+  height: 200px;
+  box-shadow:  0 1px 30px 0 rgba(0, 0, 0, 0.09);
+  border: none;
+  margin: 10px;
+  padding-bottom: 10px;
+}
+
+.cards .card:hover {
+  background-color: #EDF2f7;
+}
+
+.container-menu-item .card {
   border: 1px solid #eee;
   box-shadow: 0 2px 2px #ccc;
-  width: 250px;
-  height: 500px;
+  width: 300px;
+  height: 400px;
   padding: 20px;
   margin: 10px;
+  box-shadow:  0 1px 30px 0 rgba(0, 0, 0, 0.09);
+  border: none;
+  border-radius: 15px;
+}
+.card-img-top{
+  height: 50%;
+  width: 100%;
+}
+
+.card-title{
+  font-weight: 600;
+  color: #2D3748;
+}
+
+.card-subtitle {
+  font-weight: 200;
+  color: #A0AEC0;
+}
+
+.card-text{
+  font-weight: 300;
+  color: #718096;
+}
+
+.carousel-container{
+  width: 100%;
+}
+
+.page-title{
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: 100;
+  color: #718096;
 }
 
 .foodpic {

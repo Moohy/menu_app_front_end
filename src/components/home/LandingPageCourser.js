@@ -14,7 +14,7 @@ export default class LandingPageCourser extends React.Component {
 
     render() {
         return (
-            <Carousel className="stopOnHover verticalSwipe" 
+            <Carousel className="carousel-container" 
             showThumbs={false} stopOnHover={true} 
             showIndicators={false} showStatus={false} 
             showArrows={false} infiniteLoop={true}

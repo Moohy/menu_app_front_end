@@ -66,7 +66,7 @@ class Header extends Component {
             <div className='logo'>
                 <Router>    
                 <div>
-                    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <nav className="navbar navbar-expand-lg navbar-light" style={{width: "100vw", backgroundColor: '#1abc9c'}}>
                         <Link to="/">Home</Link>{" "}
                         <Link className="navbar-brand" to="/restaurants">Restaurants</Link>{" "}
                         <Link className="navbar-brand" to="/contactus">ContactUs</Link>{" "}
