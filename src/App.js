@@ -34,6 +34,7 @@ function App() {
     <div style={{overflowX: 'hidden'}}>
 
    <Header></Header>
+   <Footer/>
   </div>
   </>
   );
