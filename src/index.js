@@ -9,6 +9,7 @@ import * as serviceWorker from './serviceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 
 ReactDOM.render(<App />, document.getElementById('root'));

@@ -66,16 +66,17 @@ class Header extends Component {
         
         return (
 
-            <div className='logo'>
+            <div>
                 <Router>    
-                <div>
-                    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                        <Link to="/">Home</Link>{" "}
+                <div style={{width: '100%'}}>
+                    <nav style={{width: '100%'}} className="navbar navbar-expand-lg navbar-light bg-light">
+                        {/* <link to="/">Home</link>{" "} */}
+                        <div>
                         <Link className="navbar-brand" to="/restaurants">Restaurants</Link>{" "}
                         <Link className="navbar-brand" to="/contactus">ContactUs</Link>{" "}
                         <Link className="navbar-brand" to="/aboutus">AboutUs</Link>{" "}
                         {this.state.isLoggedIn? loggedInLinks : loggedOutLinks }
-
+                        </div>
                     </nav>
                 </div>
                 
@@ -94,8 +95,31 @@ class Header extends Component {
           {/* <button onClick={(e)=>this.change(e)}> Sign In </button> */}
 
             </div>
-                
-                
+
+    //     <nav style={{overflowX: 'hidden'}} className="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    //     <div style={{overflowX: 'hidden'}} className="container">
+    //       <a className="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+    //       <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    //         <span className="navbar-toggler-icon" />
+    //       </button>
+    //       <div className="collapse navbar-collapse" id="navbarResponsive">
+    //         <ul className="navbar-nav ml-auto my-2 my-lg-0">
+    //           <li className="nav-item">
+    //             <a className="nav-link js-scroll-trigger" href="#about">About</a>
+    //           </li>
+    //           <li className="nav-item">
+    //             <a className="nav-link js-scroll-trigger" href="#services">Services</a>
+    //           </li>
+    //           <li className="nav-item">
+    //             <a className="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+    //           </li>
+    //           <li className="nav-item">
+    //             <a className="nav-link js-scroll-trigger" href="#contact">Contact</a>
+    //           </li>
+    //         </ul>
+    //       </div>
+    //     </div>
+    //   </nav>   
         );
     }
 }
