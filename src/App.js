@@ -18,10 +18,8 @@ function App() {
     //     {/* <LandingPage /> */}
     //     <Footer/>
 
-
-
-    <div style={{overflowX: 'hidden'}}>
-    <ToastContainer
+    <>
+        <ToastContainer
         position="top-center"
         autoClose={3000}
         hideProgressBar={false}
@@ -32,15 +30,12 @@ function App() {
         draggable={false}
         pauseOnHover={false}
         />
+
+    <div style={{overflowX: 'hidden'}}>
+
    <Header></Header>
-  
-
-
-
-
-
-
   </div>
+  </>
   );
 }
 
