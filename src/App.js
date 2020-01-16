@@ -10,8 +10,18 @@ function App() {
 
 
   return (
-    <div className="App" style={{width: "100vw"}}>
-        <ToastContainer
+    // <div className="App" style={{width: "100vw"}}>
+
+    //   <div className="nav">
+    //     <Header />
+    //     </div>
+    //     {/* <LandingPage /> */}
+    //     <Footer/>
+
+
+
+    <div style={{overflowX: 'hidden'}}>
+    <ToastContainer
         position="top-center"
         autoClose={3000}
         hideProgressBar={false}
@@ -22,14 +32,15 @@ function App() {
         draggable={false}
         pauseOnHover={false}
         />
-      <div className="nav">
-        <Header />
-        </div>
-        {/* <LandingPage /> */}
-        <Footer/>
+   <Header></Header>
+  
 
 
-    </div>
+
+
+
+
+  </div>
   );
 }
 

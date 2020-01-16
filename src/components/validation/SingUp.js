@@ -114,6 +114,7 @@ class SingUp extends Component {
         return(
         <div>
             <Loading isActive={this.state.isActive}></Loading>
+            <h1 className='page-title'>Sign Up</h1>
            <Container>
                 <Form>
                     <Col>

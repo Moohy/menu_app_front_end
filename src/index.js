@@ -6,6 +6,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 
 ReactDOM.render(<App style={{flex: 1, flexDirection: 'row'}}/>, document.getElementById('root'));

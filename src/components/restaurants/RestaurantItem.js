@@ -18,7 +18,7 @@ export default class RestaurantItem extends Component {
     handleGetRestaurant = (e) => {
         this.setState(prevState=>{return{toMenu: !prevState.toMenu}})
         this.props.hideSearchBar()
-        this.props.hideRestaurants()
+        // this.props.hideRestaurants()
     }
     
     render() {

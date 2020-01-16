@@ -80,6 +80,7 @@ export default class SignIn extends React.Component {
         return(
         <div>
            <Loading isActive={this.state.isActive}></Loading>
+           <h1 className='page-title'>Sign In</h1>
            <Container>
                 <Form>
                     <FormGroup>

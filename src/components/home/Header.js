@@ -34,47 +34,54 @@ class Header extends Component {
     
     render() {
         const loggedInLinks = (
-            <div>
+            <>
             <Link className="navbar-brand" to="/add_menu_item">Add Menu Item</Link>{" "}
             <Link className="navbar-brand" to="/logout">Logout</Link>{" "}
-            </div>
+            </>
         )
 
         const loggedInRoutes = (
-            <div>
+            <>
             <Route path="/add_menu_item" component={AddMenuItem} />
             <Route path="/logout" component={() => <Logout loginStatus={this.loginStatus}/>} />
-            </div>
+            </>
         )
 
         const loggedOutLinks = (
-            <div>
-            <Link className="navbar-brand" to="/signin">sign in</Link>{" "}
-            <Link className="navbar-brand" to="/signup">signup</Link>{" "}
-            </div>
+            <>
+            <Link className="navbar-brand" to="/signin">SignIn</Link>{" "}
+            <Link className="navbar-brand" to="/signup">SignUp</Link>{" "}
+            </>
         )
 
         const loggedOutRoutes = (
-            <div>
+            <>
             <Route path="/signin" component={() => <SignIn loginStatus={this.loginStatus}/>} />
             <Route path="/signup" component={SingUp} />
-            </div>
+            </>
         )
         
         return (
 
-            <div className='logo'>
+            <div>
+                
                 <Router>    
-                <div>
-                    <nav className="navbar navbar-expand-lg navbar-light" style={{width: "100vw", backgroundColor: '#1abc9c'}}>
-                        <Link to="/">Home</Link>{" "}
-                        <Link className="navbar-brand" to="/restaurants">Restaurants</Link>{" "}
-                        <Link className="navbar-brand" to="/contactus">ContactUs</Link>{" "}
-                        <Link className="navbar-brand" to="/aboutus">AboutUs</Link>{" "}
-                        {this.state.isLoggedIn? loggedInLinks : loggedOutLinks }
-
+                <>
+                    <nav style={{width: '100%', backgroundColor: "#B7791F"}} className="navbar " id='nav'>
+                        <div>
+                            <p className='logo'>Menu App</p>
+                        </div>
+                        <div>
+                            <Link className="navbar-brand" to="/">Home</Link>{" "}
+                            {/* <div> */}
+                            <Link className="navbar-brand" to="/restaurants">Restaurants</Link>{" "}
+                            <Link className="navbar-brand" to="/contactus">ContactUs</Link>{" "}
+                            <Link className="navbar-brand" to="/aboutus">AboutUs</Link>{" "}
+                            {this.state.isLoggedIn? loggedInLinks : loggedOutLinks }
+                        
+                        </div>
                     </nav>
-                </div>
+                </>
                 
                 <Route exact path="/" component={LandingPage} />
                  <Route path="/restaurants" component={Restaurants} /> 
